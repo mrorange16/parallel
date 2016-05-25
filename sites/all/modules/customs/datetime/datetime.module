@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Implements hook_block_info().
+ */
+function datetime_block_info() {
+  $block = array();
+
+  $block['datetime'] = array(
+    'info' => t('Custom date')
+  );
+
+  return $block;
+}
+
+/**
+ * Implements hooks_block_view().
+ */
+function datetime_block_view($block_key) {
+  $block = array();
+
+  switch ($block_key) {
+    case 'datetime':
+      $block['subject'] = t('Current date');
+      $block['content'] = date("Y-m-d h:i:sa");
+    break;
+  }
+
+  return $block;
+}
